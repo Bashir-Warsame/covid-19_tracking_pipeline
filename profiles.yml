@@ -1,0 +1,13 @@
+covid: # this needs to match the profile in your dbt_project.yml file
+    target: dev
+    outputs:
+      dev:
+        type: bigquery
+        method: service-account
+        keyfile: /Users/bashirwarsame/Downloads/central-archery-404819-38c266bfc7e5.json # replace this with the full path to your keyfile
+        project: central-archery-404819 # Replace this with your project id
+        dataset: dbt_covid_tracking # Replace this with dbt_your_name, e.g. dbt_bilbo
+        threads: 1
+        timeout_seconds: 300
+        location:  us
+        priority: interactive
