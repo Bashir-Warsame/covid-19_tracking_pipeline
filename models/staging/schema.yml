@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+    - name: staging
+      schema: covid19
+
+      tables:
+        - name: covid_data
+         # freshness:
+           # error_after: {count: 6, period: hour}
+
+
+models:
+
+    - name: stg_covid
+      description: COVID19 table after selection of particular columns which might be interesting for dashboard. Schema is defined.
+      
