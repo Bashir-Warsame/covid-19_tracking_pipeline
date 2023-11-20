@@ -8,7 +8,7 @@
     }
 )}}
 
-with coviddata as (
+with covid_data as (
     select *, 
     from {{ ref('stg_covid') }}
     where (country is not null) and (continent is not null) and (new_cases_per_million is not null) and (new_cases is not null)
@@ -16,14 +16,14 @@ with coviddata as (
 ) 
 
 select 
-    EXTRACT(YEAR FROM coviddata.date) as date_year, -- extract the year from the date column
-    coviddata.date, 
-    coviddata.new_cases as total_cases,
-    coviddata.new_cases_per_million as total_cases_per_million,
-    coviddata.continent,
-    coviddata.country
+    EXTRACT(YEAR FROM covid_data.date) as date_year, -- extract the year from the date column
+    covid_data.date, 
+    covid_data.new_cases as total_cases,
+    covid_data.new_cases_per_million as total_cases_per_million,
+    covid_data.continent,
+    covid_data.country
 
- from coviddata
+ from covid_data
 
 {% if is_incremental() %}
 
