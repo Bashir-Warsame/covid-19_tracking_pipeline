@@ -1,15 +1,33 @@
-Welcome to your new dbt project!
 
-### Using the starter project
+# Data pipeline for tracking C0VID-19 data and dashboarding
 
-Try running the following commands:
-- dbt run
-- dbt test
+Data pipeline for uploading, preprocessing, and visualising COVID19 data using Google Cloud Platform
+This repo includes implementation of a pipeline for visualization of COVID19 data: all over the time and the last 14 days.
+Original idea of this pipeline is to have scheduled jobs with regularly updated table every two weeks. COVID19 has been affected our lives for quite long period of time already. It is important to regularly track the situation to avoid unexpected situations and be ready for actions beforehand.This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. 
 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+
+
+
+
+## Dataset
+
+The worldwide covid data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
+The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which is daily updated weekly on a Thursday (the source was Johns Hopkins University). 
+
+## Project Architecture 
+
+The source data (raw level) is originally in csv format and located in GitHub.
+Batch pipeline is implemented using Google Cloud Platform (GCP).
+Terraform is used as an IaC (Infrastructure as code) to create resources in GCP, such as virtual machine, Bigquery dataset, google cloud storage bucket, service accounts etc
+
+Pipeline partially cleans the source csv data, saves it as a parquet file, and moves sequantially first to a datalake, GCP bucket (Google Cloud Storage (GCS)) and then to a data warehouse, Google Biq Query . The whole process is orchestrated by Prefect as a scheduled job every 2 weeks.
+
+dbt models used incremental configuration meaning that dbt transforms only the rows in the source data for the last week e.g. rows that have been created or updated since the last time dbt ran.
+
+Dashboard has been built using Looker Studio which is synced with Big Query.
+
+Unit tests (/tests)have been written and integrated into CI/CD pipelines via GitHub Actions.
+
+The implementation is limited by GCP usage. At the same time, implementation does not involve any local components which makes it more flexible for collaboration goals e.g. working in a team.
