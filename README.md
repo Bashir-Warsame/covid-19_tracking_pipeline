@@ -18,7 +18,7 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 
 ## Project Architecture 
 
-https://github.com/Bashman234/covid-19_tracking_pipeline/blob/main/images/Screenshot%202023-11-23%20at%2019.10.23.png
+![](images/Screenshot%202023-11-23%20at%2019.10.23.png)/
 
 The source data (raw level) is originally in csv format and located in GitHub.
 Batch pipeline is implemented using Google Cloud Platform (GCP).
