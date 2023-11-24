@@ -1,0 +1,49 @@
+###
+### A complete description of a Prefect Deployment for flow 'gcs-to-bq'
+###
+name: COVID19 data to BQ
+description: Main ETL flow to load data into Big Query
+version: 78bac7e2e68427ee0aad9d9677adad9c
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: null
+tags: []
+parameters: {}
+schedule:
+  cron: 0 16 * * 4
+  timezone: null
+  day_or: true
+is_schedule_active: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: gcs-to-bq
+manifest_path: null
+storage: null
+path: /home/bwarsame/covid-19_tracking_pipeline/src
+entrypoint: gcs_to_bq.py:gcs_to_bq
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    log_prints:
+      title: log_prints
+      default: true
+      position: 0
+  required: null
+  definitions: null
+timestamp: '2023-11-24T14:44:26.385247+00:00'
+triggers: []
+enforce_parameter_schema: null
