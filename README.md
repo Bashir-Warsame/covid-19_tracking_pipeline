@@ -5,13 +5,7 @@ Data pipeline for uploading, preprocessing, and visualising COVID19 data using G
 This repo includes implementation of a pipeline for visualization of COVID19 data: all over the time and the last 14 days.
 Original idea of this pipeline is to have scheduled jobs with regularly updated table every two weeks. COVID19 has been affected our lives for quite long period of time already. It is important to regularly track the situation to avoid unexpected situations and be ready for actions beforehand.This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. 
 
-
-
-
 ## Dataset
-
-![ScreenShot](images/Screenshot%202023-11-24%20at%2015.43.46.png)
-![ScreenShot](images/Screenshot%202023-11-23%20at%2019.49.21.png)
 
 The worldwide covid data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which is daily updated weekly on a Thursday (the source was Johns Hopkins University). 
@@ -19,7 +13,7 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 
 ## Project Architecture 
 
-![](images/Screenshot%202023-11-23%20at%2019.10.23.png)/
+![](images/Screenshot%202023-11-23%20at%2019.10.23.png)
 
 The source data (raw level) is originally in csv format and located in GitHub.
 Batch pipeline is implemented using Google Cloud Platform (GCP).
@@ -34,3 +28,8 @@ Dashboard has been built using Looker Studio which is synced with Big Query.
 Unit tests (/tests)have been written and integrated into CI/CD pipelines via GitHub Actions.
 
 The implementation is limited by GCP usage. At the same time, implementation does not involve any local components which makes it more flexible for collaboration goals e.g. working in a team.
+
+## Dashboard
+
+![ScreenShot](images/Screenshot%202023-11-24%20at%2015.43.46.png)
+![ScreenShot](images/Screenshot%202023-11-23%20at%2019.49.21.png)
