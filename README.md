@@ -7,7 +7,7 @@ Original idea of this pipeline is to have scheduled jobs with regularly updated 
 
 
 
- ![](Screenshot 2023-11-23 at 19.49.21.png)
+ ![](images/Screenshot%2023-11-23%19.49.21.png)/
 
 
 
