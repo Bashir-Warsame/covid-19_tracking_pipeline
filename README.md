@@ -7,14 +7,14 @@ Original idea of this pipeline is to have scheduled jobs with regularly updated 
 
 
 
-![ScreenShot](images/Screenshot%202023-11-21%20at%2019.51.12.png)
-
-
 
 ## Dataset
 
+![ScreenShot](images/Screenshot%202023-11-21%20at%2019.51.12.png)
+
 The worldwide covid data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which is daily updated weekly on a Thursday (the source was Johns Hopkins University). 
+
 
 ## Project Architecture 
 
