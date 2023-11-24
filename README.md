@@ -30,7 +30,7 @@ The implementation is limited by GCP usage. At the same time, implementation doe
 
 While local implementation for this particular dataset might be an easier solution (for example, docker + PostgreSQL), cloud implementation provides much more flexibility for team collaboration and production in general.
 
-# Processing the dataset sending it into a datalake
+### Processing the dataset sending it into a datalake
 
 Data source abd data lake from the diagram indicate this part. The source data (raw data from github) is originally in csv format and located in GitHub.
 
