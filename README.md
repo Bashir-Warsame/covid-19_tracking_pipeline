@@ -7,7 +7,7 @@ Original idea of this pipeline is to have scheduled jobs with regularly updated 
 
 
 
- ![](images/Screenshot%2023-11-23%20at%2019.49.21.png)
+![ScreenShot](https://{https://github.com/Bashman234/covid-19_tracking_pipeline/blob/main/images/Screenshot%202023-11-21%20at%2019.51.12.png})
 
 
 
