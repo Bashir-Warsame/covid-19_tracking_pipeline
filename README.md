@@ -10,7 +10,7 @@ Original idea of this pipeline is to have scheduled jobs with regularly updated 
 
 ## Dataset
 
-![ScreenShot](images/images/Screenshot%202023-11-24%20at%2015.43.46.png)
+![ScreenShot](images/Screenshot%202023-11-24%20at%2015.43.46.png)
 ![ScreenShot](images/Screenshot%202023-11-23%20at%2019.49.21.png)
 
 The worldwide covid data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
