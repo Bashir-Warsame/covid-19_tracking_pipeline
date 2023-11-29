@@ -12,6 +12,11 @@ COVID-19 has affected the lives of of everyone for a long  period of time. There
 The worldwide covid data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which is daily updated weekly on a Thursday (the source was Johns Hopkins University).
 
+## Dashboarding
+
+![ScreenShot](images/Screenshot%202023-11-24%20at%2015.43.46.png)
+![ScreenShot](images/Screenshot%202023-11-23%20at%2019.49.21.png)
+
 ## Project Architecture Information
 
 ![](images/Screenshot%202023-11-23%20at%2019.10.23.png)
@@ -21,9 +26,22 @@ Terraform is used as an IaC (Infrastructure as code) to create resources in GCP,
 
 Dashboard has been built using Looker Studio which is synced with Big Query. Unit tests (/tests)have been written and integrated into CI/CD pipelines via GitHub Actions. The implementation is limited by GCP usage. At the same time, implementation does not involve any local components which makes it more flexible for collaboration goals e.g. working in a team. While local implementation for this particular dataset might be an easier solution (for example, docker + PostgreSQL), cloud implementation provides much more flexibility for team collaboration and production in general.
 
+### Processing the data and putting it into a datalake
+The source data is originally in csv file format and is located in Github. It is then sequentually extracted from its source, this process is orchestrated and executed as a scheduled job using Prefect. The jobs are Scheduled in Prefect using deployments.
+
+![ScreenShot](images/Screenshot%202023-11-23%20at%2019.32.14.png)
+![ScreenShot](images/Screenshot%202023-11-24%20at%2015.14.03.png)
+
+As seen above, the pipeline fetches the dataset, preprocesses it, and saves it as a parquet file to the local storage in this case the local storage will be inside the virtual machine created in GCP. Then, it exectues two steps simultanously running a unit test which checks the schema of a dataframe, and writing the dataset to a GCS bucket.
+
+#### Moving the data from the data lake to a data Warehouse
+Once the data is in GCS, it is then moved to the data warehouse the next pipeline does this for us 
+
+![ScreenShot](images/Screenshot%202023-11-23%20at%2019.33.00.png)
 
 
-## Dashboard
 
-![ScreenShot](images/Screenshot%202023-11-24%20at%2015.43.46.png)
-![ScreenShot](images/Screenshot%202023-11-23%20at%2019.49.21.png)
+
+
+
+
