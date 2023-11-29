@@ -2,15 +2,17 @@
 # Data pipeline for tracking C0VID-19 data and dashboarding
 
 Data pipeline for uploading, preprocessing, and visualising COVID-19 data using Google Cloud Platform
-This repository includes implementation of a pipeline for visualization of COVID-19 data: all over the time and the last 14 days.
-Original idea of this pipeline is to have scheduled jobs with regularly updated table every two weeks. COVID19 has been affected our lives for quite long period of time already. It is important to regularly track the situation to avoid unexpected situations and be ready for actions beforehand.This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. 
+
+## Project Goal
+
+COVID-19 has affected the lives of of everyone for a long  period of time. Therefore it is important to periodiacally track the situation to avoid unexpected outbreaks and to be ready to act. This repository includes implementation of a pipeline for visualization of COVID-19 data: all over the time and the last 14 days. This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. 
 
 ## Dataset
 
 The worldwide covid data has been provided by [Our World in Data](https://ourworldindata.org/coronavirus).
 The source file has been uploaded from [GitHub](https://github.com/owid/covid-19-data) which is daily updated weekly on a Thursday (the source was Johns Hopkins University).
 
-## Project Architecture 
+## Project Architecture Information
 
 ![](images/Screenshot%202023-11-23%20at%2019.10.23.png)
 
