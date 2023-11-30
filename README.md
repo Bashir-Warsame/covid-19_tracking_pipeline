@@ -27,26 +27,35 @@ Terraform is used as an IaC (Infrastructure as code) to create resources in GCP,
 Dashboard has been built using Looker Studio which is synced with Big Query. Unit tests (/tests)have been written and integrated into CI/CD pipelines via GitHub Actions. The implementation is limited by GCP usage. At the same time, implementation does not involve any local components which makes it more flexible for collaboration goals e.g. working in a team. While local implementation for this particular dataset might be an easier solution (for example, docker + PostgreSQL), cloud implementation provides much more flexibility for team collaboration and production in general.
 
 ### Processing the data and putting it into a datalake
-The source data is originally in csv file format and is located in Github. It is then sequentually extracted from its source, this process is orchestrated and executed as a scheduled job using Prefect. The jobs are Scheduled in Prefect using deployments.
+The source data is originally in csv file format and is located in Github. It is then sequentually extracted from its source, this process is orchestrated and executed as a scheduled job using Prefect. The jobs are Scheduled in Prefect using deployments. As seen below, the pipeline fetches the dataset, preprocesses it, and saves it as a parquet file to the local storage in this case the local storage will be inside the virtual machine created in GCP. Then, it exectues two steps simultanously running a unit test which checks the schema of a dataframe, and writing the dataset to a GCS bucket.
 
 ![ScreenShot](images/Screenshot%202023-11-23%20at%2019.32.14.png)
 ![ScreenShot](images/Screenshot%202023-11-24%20at%2015.14.03.png)
 
-As seen above, the pipeline fetches the dataset, preprocesses it, and saves it as a parquet file to the local storage in this case the local storage will be inside the virtual machine created in GCP. Then, it exectues two steps simultanously running a unit test which checks the schema of a dataframe, and writing the dataset to a GCS bucket.
-
 #### Moving the data from the data lake to a data Warehouse
-Once the data is in GCS, it is then moved to the data warehouse the next pipeline does this for us 
+Once the data is in GCS, it is then moved to the data warehouse the next pipeline does this for us.
 
 ![ScreenShot](images/Screenshot%202023-11-23%20at%2019.33.00.png)
 
 ##### Transforming the data in the data Warehouse with dbt
 Next the data is transformed by dbt for configuring the schema, final cleaning, selecting only thr necessary columns, and saving the resulting data as tables in BigQuery. This is a schema of the architecture in dbt. The dbt model uses incremental configuration which essentially means that dbt transforms only the rows in the source data for the last two weeks. 
 
-
-
 ![ScreenShot](images/Screenshot%202023-11-23%20at%2018.55.38.png)
 
-![ScreenShot](/images/Screenshot%202023-11-24%20at%2015.12.40.png)
+#### Reoproduciblity
+
+1. Create a new GCP project account and install the Google SDK on your local machine
+2. Use Terraform to setup the GCP infrastructure from your local machine and create a service account
+3. clone this repo into your virtual machine and install Anaconda to use virtual environments later.
+4. install prefect and set up Blocks in prefect; the Blocks must be created for GCP Bucket and GCP Credentials.
+5. Set up your Dbt cloud environment by initializing the project.
+6. Run the pipelie manually before deploying it to be schedualed bi weekly delopments.
+7. Run in Prefect web_to_gcs and gcs_to_bq fines to have the csv data go from the web to the bq dataset.
+8. use dbt run to test created models and check the schema 
+9. set up the deployment in dbt cloud by creating a job and have this job run ever 14 days.
+10. Use Looker studio do build dashboads of the COVID-19 data
+
+
 
 
 
