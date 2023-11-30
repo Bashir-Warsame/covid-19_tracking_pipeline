@@ -39,6 +39,16 @@ Once the data is in GCS, it is then moved to the data warehouse the next pipelin
 
 ![ScreenShot](images/Screenshot%202023-11-23%20at%2019.33.00.png)
 
+##### Transforming the data in the data Warehouse with dbt
+Next the data is transformed by dbt for configuring the schema, final cleaning, selecting only thr necessary columns, and saving the resulting data as tables in BigQuery. This is a schema of the architecture in dbt. The dbt model uses incremental configuration which essentially means that dbt transforms only the rows in the source data for the last two weeks. 
+
+
+
+![ScreenShot](images/Screenshot%202023-11-23%20at%2018.55.38.png)
+
+![ScreenShot](/images/Screenshot%202023-11-24%20at%2015.12.40.png)
+
+
 
 
 
