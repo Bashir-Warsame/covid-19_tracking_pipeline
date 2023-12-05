@@ -53,7 +53,7 @@ Next the data is transformed by dbt for configuring the schema, final cleaning, 
 7. Run in Prefect web_to_gcs and gcs_to_bq fines to have the csv data go from the web to the bq dataset.
 8. use dbt run to test created models and check the schema 
 9. set up the deployment in dbt cloud by creating a job and have this job run ever 14 days.
-10. Use Looker studio do build dashboads of the COVID-19 data
+10. Use Looker studio to build dashboads of the COVID-19 data
 
 
 
