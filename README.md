@@ -7,7 +7,7 @@ Data pipeline for uploading, preprocessing, and visualising COVID-19 data using 
 
 COVID-19 has affected the lives of of everyone for a long  period of time. Therefore it is important to periodiacally track the situation to avoid unexpected outbreaks and to be ready to act. This repository includes implementation of a pipeline for visualization of COVID-19 data: all over the time and the last 14 days. This project builds the pipeline which updates the dashboard for monitoring total cases of COVID19. 
 
-## Technolgy Used
+## Tech Used
 * Google Cloud Platform
 * Google Storage buckets as Data Lake
 * Google Bigquery datasets as Data Warehouse
