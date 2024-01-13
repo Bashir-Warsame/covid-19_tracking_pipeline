@@ -59,6 +59,14 @@ Next the data is transformed by dbt for configuring the schema, final cleaning, 
 
 ![ScreenShot](images/Screenshot%202023-11-23%20at%2018.55.38.png)
 
+#### Possible Improvements 
+
+Dashboard can be modified by adding ´total cases per million´ metrics instead of ´total cases´ which is a normalization for easier comparison between countries.
+
+Due to the nature of the source dataset, the current implementation every time copies the full file. It is not the ideal case because datalake already contains most of the data and only recent data has to be added. It is not a problem for this project because the size of the data is not huge and cost of the operation is very low, but in general, it is not a good practice.
+
+Within pipelines, there is a risk that one of the steps might fail and running other steps could be meaningless or sometimes even harmful. Ideally, steps in pipeline should be triggered based on the success of the previous one instead of the scheduled runs. Such triggers might be easily implemented in Prefect using ´Automations´ feature. However, because the pipeline is not complex and easy to debug, triggers automation can be avoided for now.
+
 #### Reoproduciblity
 
 1. Create a new GCP project account and install the Google SDK on your local machine
