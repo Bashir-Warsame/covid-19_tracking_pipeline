@@ -36,7 +36,7 @@ The source file has been uploaded from [GitHub](https://github.com/owid/covid-19
 
 ## Project Architecture Information
 
-![](images/Screenshot%202023-11-23%20at%2019.10.23.png)
+![](/images/Screenshot%202024-01-13%20at%2021.53.26.png)
 
 Batch pipeline is implemented using Google Cloud Platform (GCP).
 Terraform is used as an IaC (Infrastructure as code) to create resources in GCP, such as virtual machine, Bigquery dataset, google cloud storage bucket and service accounts. The pipeline partially cleans the source csv data, saves it as a parquet file, and moves sequantially first to a datalake, GCP bucket (Google Cloud Storage (GCS)) and then to a data warehouse, Google Biq Query . The whole process is orchestrated by Prefect as a scheduled job every 2 weeks. The data from the data warehouse is then transfromed by dbt for configuring the schema, final cleaning, selecting only the columbs needed, and saving the agregated data as tables in BigQuery. The data is partitioned on the date as the date is then used for quering, this optimizes the process. Due to the size of the data, i close to not cluster it. dbt models used incremental configuration meaning that dbt transforms only the rows in the source data for the last week e.g. rows that have been created or updated since the last time dbt ran.
